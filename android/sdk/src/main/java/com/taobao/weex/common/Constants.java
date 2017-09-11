@@ -84,6 +84,7 @@ public class Constants {
     String BORDER_BOTTOM_STYLE = "borderBottomStyle";
     String BORDER_LEFT_STYLE = "borderLeftStyle";
     String BORDER_TOP_STYLE = "borderTopStyle";
+    String BOX_SHADOW = "boxShadow";
 
     String POSITION = "position";
 
@@ -152,6 +153,7 @@ public class Constants {
     String OFFSET_X_ACCURACY = "offsetXAccuracy";
     String OFFSET_X_RATIO = "offsetXRatio";
     String ELEVATION = "elevation";
+    String PERSPECTIVE = "perspective";
     String SCROLLABLE = "scrollable";
     String DRAGGABLE = "draggable";
     String DISTANCE_Y = "dy";
@@ -169,6 +171,9 @@ public class Constants {
     String OFFSET = "offset";
     String ANIMATED = "animated";
     String STABLE = "stable";
+    String TRANSFORM = "transform";
+    String TRANSFORM_ORIGIN = "transformOrigin";
+    String KEEP_INDEX = "keepIndex";
 
     String INSERT_CELL_ANIMATION = "insertAnimation";
     String DELETE_CELL_ANIMATION = "deleteAnimation";
@@ -176,6 +181,7 @@ public class Constants {
     String NORMAL = "normal";
     String ARIA_LABEL = "ariaLabel";
     String ARIA_HIDDEN = "ariaHidden";
+    String UNDEFINED = "undefined";
   }
 
   public interface Value {

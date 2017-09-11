@@ -31,6 +31,7 @@ import android.os.Build;
 import android.os.Message;
 import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
+import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
@@ -39,6 +40,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.taobao.weex.ComponentObserver;
@@ -57,6 +59,8 @@ import com.taobao.weex.dom.WXDomTask;
 import com.taobao.weex.dom.WXStyle;
 import com.taobao.weex.dom.action.Actions;
 import com.taobao.weex.dom.flex.Spacing;
+import com.taobao.weex.tracing.Stopwatch;
+import com.taobao.weex.tracing.WXTracing;
 import com.taobao.weex.ui.IFComponentHolder;
 import com.taobao.weex.ui.animation.WXAnimationModule;
 import com.taobao.weex.ui.component.pesudo.OnActivePseudoListner;
@@ -66,12 +70,18 @@ import com.taobao.weex.ui.view.border.BorderDrawable;
 import com.taobao.weex.ui.view.gesture.WXGesture;
 import com.taobao.weex.ui.view.gesture.WXGestureObservable;
 import com.taobao.weex.ui.view.gesture.WXGestureType;
+import com.taobao.weex.utils.BoxShadowUtil;
 import com.taobao.weex.utils.WXDataStructureUtil;
 import com.taobao.weex.utils.WXLogUtils;
 import com.taobao.weex.utils.WXReflectionUtils;
 import com.taobao.weex.utils.WXResourceUtils;
 import com.taobao.weex.utils.WXUtils;
 import com.taobao.weex.utils.WXViewUtils;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -122,6 +132,8 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
   private boolean mIsDisabled = false;
   private int mType = TYPE_COMMON;
   private boolean mNeedLayoutOnAnimation = false;
+
+  public WXTracing.TraceInfo mTraceInfo = new WXTracing.TraceInfo();
 
   public static final int TYPE_COMMON = 0;
   public static final int TYPE_VIRTUAL = 1;
@@ -286,6 +298,7 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
   }
 
   public void applyLayoutAndEvent(WXComponent component) {
+    long startNanos = System.nanoTime();
     if(!isLazy()) {
       if (component == null) {
         component = this;
@@ -293,8 +306,8 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
       setLayout(component.getDomObject());
       setPadding(component.getDomObject().getPadding(), component.getDomObject().getBorder());
       addEvents();
-
     }
+    mTraceInfo.uiThreadNanos += (System.nanoTime() - startNanos);
   }
 
   protected final void addFocusChangeListener(OnFocusChangeListener l){
@@ -348,6 +361,7 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
   }
 
   public void bindData(WXComponent component){
+    long startNanos = System.nanoTime();
     if(!isLazy()) {
       if (component == null) {
         component = this;
@@ -357,6 +371,7 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
       updateAttrs(component);
       updateExtra(component.getDomObject().getExtra());
     }
+    mTraceInfo.uiThreadNanos += (System.nanoTime() - startNanos);
   }
 
   public void updateStyle(WXComponent component){
@@ -500,11 +515,21 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
   }
 
   public float getLayoutWidth(){
-    return mDomObj == null ? 0 : mDomObj.getLayoutWidth();
+    float w = 0f;
+    if (mDomObj != null) {
+      w = mDomObj.getLayoutWidth();
+      w = Float.isNaN(w) ? 0f : w;
+    }
+    return w;
   }
 
   public float getLayoutHeight(){
-    return mDomObj == null ? 0 : mDomObj.getLayoutHeight();
+    float h = 0f;
+    if (mDomObj != null) {
+      h = mDomObj.getLayoutHeight();
+      h = Float.isNaN(h) ? 0f : h;
+    }
+    return h;
   }
 
   public void setPadding(Spacing padding, Spacing border) {
@@ -634,9 +659,23 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
       case Constants.Name.BORDER_TOP_RIGHT_RADIUS:
       case Constants.Name.BORDER_BOTTOM_RIGHT_RADIUS:
       case Constants.Name.BORDER_BOTTOM_LEFT_RADIUS:
-        Float radius = WXUtils.getFloat(param,null);
-        if (radius != null)
-          setBorderRadius(key,radius);
+        final Float radius = WXUtils.getFloat(param,null);
+        final String finalKey = key;
+        if (radius != null) {
+          if (this instanceof WXDiv && mHost != null) {
+            /* Hacked by moxun
+               Set border radius on ViewGroup will cause the Overlay to be cut and don't know why
+               Delay setting border radius can avoid the problem, and don't know why too, dog science…… */
+            mHost.postDelayed(new Runnable() {
+              @Override
+              public void run() {
+                setBorderRadius(finalKey, radius);
+              }
+            }, 64);
+          } else {
+            setBorderRadius(finalKey, radius);
+          }
+        }
         return true;
       case Constants.Name.BORDER_WIDTH:
       case Constants.Name.BORDER_TOP_WIDTH:
@@ -714,21 +753,50 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
       case Constants.Name.RIGHT:
       case Constants.Name.BOTTOM:
         return true;
+      case Constants.Name.BOX_SHADOW:
+        updateBoxShadow();
+        return true;
       default:
         return false;
     }
   }
 
-  private void setPerspective(Object param) {
-    T host = getHostView();
-    if (host != null) {
-      float value = WXUtils.getFloatByViewport(param, getInstance().getInstanceViewPortWidth());
-      float scale = host.getResources().getDisplayMetrics().density;
-      if (!Float.isNaN(value) && value > 0) {
-        host.setCameraDistance(value * scale);
-      } else {
-        host.setCameraDistance(Float.MAX_VALUE);
+  protected void updateBoxShadow() {
+    if (getDomObject() != null && getDomObject().getStyles() != null) {
+      Object boxShadow = getDomObject().getStyles().get(Constants.Name.BOX_SHADOW);
+      if (boxShadow == null) {
+        return;
       }
+
+      float[] radii = new float[] {0, 0, 0, 0, 0, 0, 0, 0};
+      WXStyle style = getDomObject().getStyles();
+      if (style != null) {
+        float tl = WXUtils.getFloat(style.get(Constants.Name.BORDER_TOP_LEFT_RADIUS), 0f);
+        radii[0] = tl;
+        radii[1] = tl;
+
+        float tr = WXUtils.getFloat(style.get(Constants.Name.BORDER_TOP_RIGHT_RADIUS), 0f);
+        radii[2] = tr;
+        radii[3] = tr;
+
+        float br = WXUtils.getFloat(style.get(Constants.Name.BORDER_BOTTOM_RIGHT_RADIUS), 0f);
+        radii[4] = br;
+        radii[5] = br;
+
+        float bl = WXUtils.getFloat(style.get(Constants.Name.BORDER_BOTTOM_LEFT_RADIUS), 0f);
+        radii[6] = bl;
+        radii[7] = bl;
+
+        if (style.containsKey(Constants.Name.BORDER_RADIUS)) {
+          float radius = WXUtils.getFloat(style.get(Constants.Name.BORDER_RADIUS), 0f);
+          for (int i = 0; i < radii.length; i++) {
+            radii[i] = radius;
+          }
+        }
+      }
+      BoxShadowUtil.setBoxShadow(mHost, boxShadow.toString(), radii, getInstance().getInstanceViewPortWidth());
+    } else {
+      WXLogUtils.w("Can not resolve styles");
     }
   }
 
@@ -901,9 +969,12 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
    *
    */
   public final void createView() {
+    long startNanos = System.nanoTime();
     if(!isLazy()) {
       createViewImpl();
     }
+    mTraceInfo.uiThreadStart = System.currentTimeMillis();
+    mTraceInfo.uiThreadNanos += (System.nanoTime() - startNanos);
   }
 
   protected void createViewImpl() {
@@ -957,9 +1028,6 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
    */
   @CallSuper
   protected void onHostViewInitialized(T host){
-    if(host!=null){
-      host.setCameraDistance(Float.MAX_VALUE);
-    }
     if (mAnimationHolder != null) {
       //Performs cached animation
       mAnimationHolder.execute(mInstance, this);
@@ -1552,5 +1620,51 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
     message.obj = task;
     message.what = WXDomHandler.MsgType.WX_DOM_UPDATE_STYLE;
     WXSDKManager.getInstance().getWXDomManager().sendMessage(message);
+  }
+
+  public static final int STATE_DOM_FINISH = 0;
+  public static final int STATE_UI_FINISH = 1;
+  public static final int STATE_ALL_FINISH = 2;
+  @IntDef({STATE_DOM_FINISH, STATE_UI_FINISH, STATE_ALL_FINISH})
+  @Retention(RetentionPolicy.SOURCE)
+  @Target(ElementType.PARAMETER)
+  public @interface RenderState {}
+
+  @CallSuper
+  public void onRenderFinish(@RenderState int state) {
+    if (WXTracing.isAvailable()) {
+      double domTime = Stopwatch.nanosToMillis(((WXDomObject) mDomObj).mDomThreadNanos + mTraceInfo.domThreadNanos);
+      double uiTime = Stopwatch.nanosToMillis(mTraceInfo.uiThreadNanos);
+      if (state == STATE_ALL_FINISH || state == STATE_DOM_FINISH) {
+        WXTracing.TraceEvent domEvent = WXTracing.newEvent("DomExecute", getInstanceId(), mTraceInfo.rootEventId);
+        domEvent.ph = "X";
+        domEvent.duration = domTime;
+        domEvent.ts = mTraceInfo.domThreadStart;
+        domEvent.tname = "DOMThread";
+        domEvent.name = getDomObject().getType();
+        domEvent.classname = getClass().getSimpleName();
+        if (getParent() != null) {
+          domEvent.parentRef = getParent().getRef();
+        }
+        domEvent.submit();
+      }
+
+      if (state == STATE_ALL_FINISH || state == STATE_UI_FINISH) {
+        if (mTraceInfo.uiThreadStart != -1) {
+          WXTracing.TraceEvent uiEvent = WXTracing.newEvent("UIExecute", getInstanceId(), mTraceInfo.rootEventId);
+          uiEvent.ph = "X";
+          uiEvent.duration = uiTime;
+          uiEvent.ts = mTraceInfo.uiThreadStart;
+          uiEvent.name = getDomObject().getType();
+          uiEvent.classname = getClass().getSimpleName();
+          if (getParent() != null) {
+            uiEvent.parentRef = getParent().getRef();
+          }
+          uiEvent.submit();
+        } else {
+          WXLogUtils.w("onRenderFinish", "createView() not called");
+        }
+      }
+    }
   }
 }
