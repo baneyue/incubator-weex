@@ -85,6 +85,7 @@ public class Constants {
     String BORDER_LEFT_STYLE = "borderLeftStyle";
     String BORDER_TOP_STYLE = "borderTopStyle";
     String BOX_SHADOW = "boxShadow";
+    String SHADOW_QUALITY = "shadowQuality";
 
     String POSITION = "position";
 
@@ -109,6 +110,7 @@ public class Constants {
     String SRC = "src";
     String PLACE_HOLDER = "placeHolder";
     String RESIZE_MODE = "resizeMode";
+    String AUTO_RECYCLE = "autoBitmapRecycle";
     String SHOW_INDICATORS = "showIndicators";
     String AUTO_PLAY = "autoPlay";
     String SCROLL_DIRECTION = "scrollDirection";
@@ -182,6 +184,9 @@ public class Constants {
     String ARIA_LABEL = "ariaLabel";
     String ARIA_HIDDEN = "ariaHidden";
 
+    String STICKY_OFFSET = "stickyOffset";
+    String HAS_FIXED_SIZE = "hasFixedSize";
+    String KEEP_POSITION_LAYOUT_DELAY = "keepPositionLayoutDelay";
 
     interface  Recycler{
       String LIST_DATA = "listData";
