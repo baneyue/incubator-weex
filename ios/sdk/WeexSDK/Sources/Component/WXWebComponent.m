@@ -22,6 +22,7 @@
 #import "WXUtility.h"
 #import "WXHandlerFactory.h"
 #import "WXURLRewriteProtocol.h"
+#import "WXSDKEngine.h"
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
@@ -82,6 +83,9 @@ WX_EXPORT_METHOD(@selector(goForward))
     _webview = (WXWebView *)self.view;
     _webview.delegate = self;
     _webview.allowsInlineMediaPlayback = YES;
+    _webview.scalesPageToFit = YES;
+    [_webview setBackgroundColor:[UIColor clearColor]];
+    _webview.opaque = NO;
     _jsContext = [_webview valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     __weak typeof(self) weakSelf = self;
     _jsContext[@"$notifyWeex"] = ^(JSValue *data) {
@@ -196,6 +200,9 @@ WX_EXPORT_METHOD(@selector(goForward))
         NSMutableDictionary *data = [self baseInfo];
         [data setObject:[error localizedDescription] forKey:@"errorMsg"];
         [data setObject:[NSString stringWithFormat:@"%ld", (long)error.code] forKey:@"errorCode"];
+        if(error.userInfo && ![error.userInfo[NSURLErrorFailingURLStringErrorKey] hasPrefix:@"http"]){
+            return;
+        }
         [self fireEvent:@"error" params:data];
     }
 }
