@@ -30,8 +30,8 @@
     	  height: '300px',
     	  items: [1, 2, 3, 4],
     	}, function(ret) {
-    	  var result = ret.result;
-    	  if (result == 'success') {
+    	  var resultVo = ret.resultVo;
+    	  if (resultVo == 'success') {
     		self.normalpickData = ret.data;
     	  }
     	})
@@ -43,8 +43,8 @@
     	  'max': '2016-12-30',
     	  'min': '2014-12-30',
     	}, function(ret) {
-    	  var result = ret.result;
-    	  if (result == 'success') {
+    	  var resultVo = ret.resultVo;
+    	  if (resultVo == 'success') {
     		self.pickDateData = ret.data;
     	  }
     	});
@@ -53,8 +53,8 @@
     	var self = this;
     	picker.pickTime({
     	}, function(ret) {
-    	  var result = ret.result;
-    	  if (result == 'success') {
+    	  var resultVo = ret.resultVo;
+    	  if (resultVo == 'success') {
     		self.pickTimeData = ret.data;
     	  }
     	});

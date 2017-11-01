@@ -129,7 +129,7 @@ Another example is the user using fetch to send network requests. When the reque
 
 + `getRoot(instanceId): JSON`   
 
-This method returns the full JSON description of the document body node. Developers can view the full native DOM tree as a result. The format of the specific return value is the same as the return method of the toJSON () method in the native DOM interface. This feature is used extensively as a developer tool extension.
+This method returns the full JSON description of the document body node. Developers can view the full native DOM tree as a resultVo. The format of the specific return value is the same as the return method of the toJSON () method in the native DOM interface. This feature is used extensively as a developer tool extension.
 
 ## Configure the JS Framework in WeexSDK  
 ### Prepare your JS Framework code

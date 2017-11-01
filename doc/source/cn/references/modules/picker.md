@@ -25,7 +25,7 @@ version: 2.1
   - `items {array}`：picker 数据源
 
 - `callback {function (ret)}`：执行完读取操作后的回调函数。`ret {Object}` 为 `callback` 函数的参数，有两个属性：
-  - `result {string}`：结果三种类型 `success`, `cancel`, `error`
+  - `resultVo {string}`：结果三种类型 `success`, `cancel`, `error`
   - `data {number}`：选择的选项,仅成功确认时候存在。
 
 ### `pickDate(options, callback[options])`
@@ -40,7 +40,7 @@ version: 2.1
   - `min {string}`：可选，date 的最小值
 
 - `callback {function (ret)}`：执行完读取操作后的回调函数。`ret {Object}` 为 `callback` 函数的参数，有两个属性：
-  - `result {string}`：结果三种类型 `success`, `cancel`, `error`
+  - `resultVo {string}`：结果三种类型 `success`, `cancel`, `error`
   - `data {string}`：选择的值 date 的字符，格式为 `yyyy-MM-dd`, 仅成功确认的时候存在。
 
 ### `pickTime(options, callback[options])`
@@ -53,7 +53,7 @@ version: 2.1
   - `value {string}`：必选，time 格式为 `HH:mm`
 
 - `callback {function (ret)}`：执行完读取操作后的回调函数。`ret {Object}` 为 `callback` 函数的参数，有两个属性：
-  - `result {string}`：结果三种类型 `success`, `cancel`, `error`
+  - `resultVo {string}`：结果三种类型 `success`, `cancel`, `error`
   - `data {string}`：time 格式为 `HH:mm`, 仅成功确认的时候存在。
 
 ## 示例
@@ -85,7 +85,7 @@ version: 2.1
         picker.pickTime({
           value: this.value
         }, event => {
-          if (event.result === 'success') {
+          if (event.resultVo === 'success') {
             this.value = event.data
           }
         })

@@ -352,11 +352,11 @@
     created() {
       // let self = this
       // setTimeout(()=>{
-      //   weex.requireModule('dom').getComponentRect(this.$refs.fixed, result=>{
-      //     const x = result.size.left
-      //     const y = result.size.top
-      //     const width = result.size.width
-      //     const height = result.size.height
+      //   weex.requireModule('dom').getComponentRect(this.$refs.fixed, resultVo=>{
+      //     const x = resultVo.size.left
+      //     const y = resultVo.size.top
+      //     const width = resultVo.size.width
+      //     const height = resultVo.size.height
       //     self.fixedRect = `${x}|${y}|${width}|${height}`
       //   })
       // }, 3000)

@@ -5,7 +5,7 @@
         <button class='mr-base' type="info" size="middle" value="longpress" @longpress.native="longpress"></button>
       </div>
       <panel title='校验结果：'>
-        <text test-id='result' style="font-size:30px">{{resultTxt}}</text>
+        <text test-id='resultVo' style="font-size:30px">{{resultTxt}}</text>
       </panel>
     </panel>
     <wxc-desc>

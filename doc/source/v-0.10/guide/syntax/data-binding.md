@@ -241,7 +241,7 @@ example2.items = []
 </script>
 ```
 
-As shown above, after the `static` attribute is added, the rendering result will be `Hello, static`, which is equivalent to rendering a static node. The change of the data `word` in ready function will not be listened, so the text value will not change. 
+As shown above, after the `static` attribute is added, the rendering resultVo will be `Hello, static`, which is equivalent to rendering a static node. The change of the data `word` in ready function will not be listened, so the text value will not change.
 `static` property is designed to reduce the long list or pure static page memory overhead. Be careful with it, as it will likely break your page logic.
 
 Next, let's have a look at [style and class](./style-n-class.html).

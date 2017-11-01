@@ -73,7 +73,7 @@ We will bring a better syntax design in the future.
 `line-height` style in text component is different from h5 and Android,  text value will be placed at bottom of line box because of iOS native api. We are trying to optimize it.
 
 ## Android only support `overflow:hidden`
-The `overflow` style in android is `hidden` and cannot be changed. This is the result of Android View framework. This only happens on Android, iOS will work as expected.
+The `overflow` style in android is `hidden` and cannot be changed. This is the resultVo of Android View framework. This only happens on Android, iOS will work as expected.
 
 ## How to get rid of 750 adaption and calculate width/height in real pixels？
 

@@ -48,8 +48,8 @@ When passed a key name, will remove that key from the storage.
 ```javascript
 var storage = weex.requireModule('storage');
 storage.removeItem('foo', function(e) {
-  // callback. 'e' is an object that contains 'result' and 'data'.
-  // e.result will return 'success' or 'failed' according to the executing result.
+  // callback. 'e' is an object that contains 'resultVo' and 'data'.
+  // e.resultVo will return 'success' or 'failed' according to the executing resultVo.
   // e.data will always return 'undefined' in this function if success.
 });
 ```
@@ -120,8 +120,8 @@ Returns an array that contains all keys stored in Storage object.
       },
       getAll () {
         storage.getAllKeys(event => {
-          // modal.toast({ message: event.result })
-          if (event.result === 'success') {
+          // modal.toast({ message: event.resultVo })
+          if (event.resultVo === 'success') {
             modal.toast({
               message: 'props: ' + event.data.join(', ')
             })

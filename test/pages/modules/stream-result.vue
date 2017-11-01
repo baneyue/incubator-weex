@@ -1,6 +1,6 @@
 <template>
   <scroller>
-    <panel title = 'stream-result' :padding-body='0'>
+    <panel title = 'stream-resultVo' :padding-body='0'>
       <div style='flex-direction:row'>
         <button test-id='streamGet' class='mr-base' type="info" size="middle" value="streamGet" @click.native="streamGet"></button>
         <text style="font-size:30px">{{complete}}</text>
@@ -47,7 +47,7 @@
 </template>
 <script>
   var GET_URL = 'http://httpbin.org/get';
-  var GET_URL_JSONP = 'http://jsfiddle.net/echo/jsonp/?callback=anything&result=content_in_response';
+  var GET_URL_JSONP = 'http://jsfiddle.net/echo/jsonp/?callback=anything&resultVo=content_in_response';
   var POST_URL = 'http://httpbin.org/post';
   var PUT_URL = 'http://httpbin.org/put';
   var DELETE_URL = 'http://httpbin.org/delete';

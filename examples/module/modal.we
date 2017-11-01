@@ -57,8 +57,8 @@
           'message': msg,
           'okTitle': okTitle,
           'cancelTitle': cancelTitle
-        }, function(result) {
-          self.toast("Click Confirm  " + result);
+        }, function(resultVo) {
+          self.toast("Click Confirm  " + resultVo);
         });
 
       },
@@ -69,8 +69,8 @@
           'message': 'I am Prompt!',
           'okTitle': 'ok',
           'cancelTitle': 'cancel'
-        }, function(result) {
-          self.toast("Click Prompt  " + result);
+        }, function(resultVo) {
+          self.toast("Click Prompt  " + resultVo);
         });
        
       }

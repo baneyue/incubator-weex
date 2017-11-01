@@ -30,7 +30,7 @@ or update that key's value if it already exists.
 ```javascript
 var storage = require('@weex-module/storage');
 storage.setItem('bar', 'bar-value', function(e) {
-  // callback.'e' is an object that contains 'result' and 'data'. e.result indicate whether `setItem` is succeed.
+  // callback.'e' is an object that contains 'resultVo' and 'data'. e.resultVo indicate whether `setItem` is succeed.
   // e.data will return 'undefined' if success or 'invalid_param' if your key/value is ""/null.
 });
 ```
@@ -49,7 +49,7 @@ When passed a key name, will return that key's value.
 ```javascript
 var storage = require('@weex-module/storage');
 storage.getItem('foo', function(e) {
-  //callback.'e' is an object that contains 'result' and 'data'.
+  //callback.'e' is an object that contains 'resultVo' and 'data'.
   // use 'e.data' to fetch the value of the key,if not found,'undefined' will return.
 });
 ```
@@ -68,8 +68,8 @@ When passed a key name, will remove that key from the storage.
 ```javascript
 var storage = require('@weex-module/storage');
 storage.removeItem('foo', function(e) {
-  // callback. 'e' is an object that contains 'result' and 'data'.
-  // e.result will return 'success' or 'failed' according to the executing result.
+  // callback. 'e' is an object that contains 'resultVo' and 'data'.
+  // e.resultVo will return 'success' or 'failed' according to the executing resultVo.
   // e.data will always return 'undefined' in this function if success.
 });
 ```
@@ -87,7 +87,7 @@ Returns an integer representing the number of data items stored in the Storage o
 ```javascript
 var storage = require('@weex-module/storage');
 storage.length(function(e) {
-  // callback. 'e' is an object that contains 'result' and 'data'.
+  // callback. 'e' is an object that contains 'resultVo' and 'data'.
   //e.data will return that number.
 });
 ```
@@ -105,7 +105,7 @@ Returns an array that contains all keys stored in Storage object.
 ```javascript
 var storage = require('@weex-module/storage');
 storage.getAllKeys(function(e) {
-  // callback. 'e' is an object that contains 'result' and 'data'.
+  // callback. 'e' is an object that contains 'resultVo' and 'data'.
   //e.data will return that array of keys.
 });
 ```

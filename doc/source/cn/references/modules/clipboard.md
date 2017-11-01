@@ -28,7 +28,7 @@ version: 2.1
 
 * `callback {function (ret)}`：执行完读取操作后的回调函数。`ret {Object}` 为 `callback` 函数的参数，有两个属性：
   - `ret.data`：获取到的文本内容；
-  - `ret.result`：返回状态，可能为 `success` 或 `fail`。
+  - `ret.resultVo`：返回状态，可能为 `success` 或 `fail`。
 
 ### `setString(text)`
 

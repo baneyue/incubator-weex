@@ -53,11 +53,11 @@ module.exports = {
 
     //getItem
     storage.getItem('foo',function(e){
-      console.log('get foo result:'+JSON.stringify(e));
+      console.log('get foo resultVo:'+JSON.stringify(e));
       me.getItemResult = 'get foo,value is '+e.data+'\n';
     });
     storage.getItem('bar',function(e){
-      console.log('get bar result:'+JSON.stringify(e));
+      console.log('get bar resultVo:'+JSON.stringify(e));
       me.getItemResult += 'get bar,value is '+e.data;
     });
 
@@ -76,7 +76,7 @@ module.exports = {
     //removeItem
     storage.removeItem('foo',function(e){
       console.log('remove foo:'+JSON.stringify(e));
-      me.removeItemResult = 'remove item foo '+e.result;
+      me.removeItemResult = 'remove item foo '+e.resultVo;
     });
 
   }

@@ -224,18 +224,18 @@ Weex使用 _mustache_ 的语法 (`{% raw %}{{...}}{% endraw %}`) 来对 `<templa
 ```html
 <template>
   <div>
-    <text onclick="toggle">Toggle: {{result}}</text>
+    <text onclick="toggle">Toggle: {{resultVo}}</text>
   </div>
 </template>
 
 <script>
   module.exports = {
     data: {
-      result: true
+      resultVo: true
     },
     methods: {
       toggle: function () {
-        this.result = !this.result
+        this.resultVo = !this.resultVo
       }
     }
   }

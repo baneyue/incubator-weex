@@ -39,7 +39,7 @@ Weex SDK 只提供渲染，而不是其他的能力，如果你需要 像网络�
           ((WXDemoViewController *)controller).url = [NSURL URLWithString:newURL];
       
           [[weexInstance.viewController navigationController] pushViewController:controller animated:YES];
-          callback(@{@"result":@"success"});
+          callback(@{@"resultVo":@"success"});
       }
       
       @end

@@ -57,7 +57,7 @@ properties of `transform`:
 | perspective <span class="api-version">v0.16+</span> | The distance between the z=0 plane and the user in order to give to the 3D-positioned element some perspective. Supported for Android 4.1 and above. | number | positive infinity
 | scale/scaleX/scaleY             | Stretch or shrink the element.           | number           | none          |
 
--  `callback`(function): Callback which is called after the completion of transition.**NOTISE, after WeexSDK0.16.0, in iOS platform can get animation's message about completion, there are two types of parameters with `result`, is `Success`and `Fail`, Android can not support until now.**
+-  `callback`(function): Callback which is called after the completion of transition.**NOTISE, after WeexSDK0.16.0, in iOS platform can get animation's message about completion, there are two types of parameters with `resultVo`, is `Success`and `Fail`, Android can not support until now.**
 
 
 ### Example

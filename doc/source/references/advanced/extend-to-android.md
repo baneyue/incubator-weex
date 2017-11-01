@@ -78,7 +78,7 @@ If the module need implement a callback to javascript, you just add `JSCallback`
 public void openURL(String url,JSCallback callback){
   //implement your module logic here
   Map<String,Object> resp = new HashMap();
-  resp.put("result","ok");
+  resp.put("resultVo","ok");
   callback.invoke(resp);
 }
 ```
@@ -86,7 +86,7 @@ public void openURL(String url,JSCallback callback){
 At the javascript side, call the module with javascript function to receive callback data:
 
 ```javascript
-event.openURL("http://www.github.com",function(resp){ console.log(resp.result); });
+event.openURL("http://www.github.com",function(resp){ console.log(resp.resultVo); });
 ```
 
 ### Component extend

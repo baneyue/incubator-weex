@@ -32,7 +32,7 @@ Example
 ```js
 var clipboard = require('@weex-module/clipboard');
 clipboard.getString(function(ret) {
-  // callback. 'ret' is an object that contains 'result' and 'data'.
+  // callback. 'ret' is an object that contains 'resultVo' and 'data'.
   // use 'ret.data' to fetch the value.
   console.log("read from clipboard is " + ret.data);
 });

@@ -45,7 +45,7 @@
     },
     created: function() {
       var me = this;
-      var GET_URL_JSONP = 'http://jsfiddle.net/echo/jsonp/?callback=anything&result=content_in_response';
+      var GET_URL_JSONP = 'http://jsfiddle.net/echo/jsonp/?callback=anything&resultVo=content_in_response';
       var GET_URL = 'http://httpbin.org/get';
       var POST_URL = 'http://httpbin.org/post';
       var PUT_URL = 'http://httpbin.org/put';

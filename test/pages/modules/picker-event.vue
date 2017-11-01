@@ -42,7 +42,7 @@
             'min':'2010-01-31',
         }
         picker.pickDate(params,  (ret) => {
-          if(ret.result == 'success') {
+          if(ret.resultVo == 'success') {
               this.resultTxt = ret.data;
           }
         });

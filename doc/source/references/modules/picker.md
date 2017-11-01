@@ -25,8 +25,8 @@ pick data(single column)
   - `items {array}`:picker's data
 
 - `callback {function (ret)}`:the callback function after executing this action.`ret {Object}` is `callback` 's parameter:
-  - `result {string}`:result is one of success,cancel,error
-  - `data {number}`:the selected index,it exists when result is success.
+  - `resultVo {string}`:resultVo is one of success,cancel,error
+  - `data {number}`:the selected index,it exists when resultVo is success.
 
 ### `pickDate(options, callback[options])`
 
@@ -40,8 +40,8 @@ pick date
   - `min {string}`:optional，date's min value
 
 - `callback {function (ret)}`：the callback function after executing this action.ret {Object} is callback 's parameter:
-  - `result {string}`:result is one of success,cancel,error
-  - `data {string}`:the selected value，the  form of data is yyyy-MM-dd ,it exists when result is success.
+  - `resultVo {string}`:resultVo is one of success,cancel,error
+  - `data {string}`:the selected value，the  form of data is yyyy-MM-dd ,it exists when resultVo is success.
 
 ### `pickTime(options, callback[options])`
 
@@ -53,8 +53,8 @@ pick time
   - `value {string}`:required，the form of value is HH:mm
 
 - `callback {function (ret)}`:the callback function after executing this action.ret {Object} is callback 's parameter：
-  - `result {string}`:result is one of success,cancel,error
-  - `data {string}`:the selected value，the form of data is HH:mm,it exists when result is success.
+  - `resultVo {string}`:resultVo is one of success,cancel,error
+  - `data {string}`:the selected value，the form of data is HH:mm,it exists when resultVo is success.
 
 ## Example
 
@@ -85,7 +85,7 @@ pick time
         picker.pickTime({
           value: this.value
         }, event => {
-          if (event.result === 'success') {
+          if (event.resultVo === 'success') {
             this.value = event.data
           }
         })

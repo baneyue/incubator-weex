@@ -55,7 +55,7 @@ When an alert box pops up, the user will have to click "OK" to proceed.
  - `okTitle` (string): the text of positive button, default is 'OK'.
  - `callback` (function): callback when complete.    
   This method has a callback function whose arguments will be:    
-- `result` (string): the title text of the confirm button that clicked by user.
+- `resultVo` (string): the title text of the confirm button that clicked by user.
 
 **Example:**
 
@@ -82,8 +82,8 @@ When an alert box pops up, the user will have to click "OK" to proceed.
         modal.alert({
           'message': 'I am alert message',
           'okTitle' : 'YES'
-        }, function (result) {
-          self.params = String(result)
+        }, function (resultVo) {
+          self.params = String(resultVo)
         });
       }
     }
@@ -104,7 +104,7 @@ When a confirm box pops up, the user will have to click either confirm or cancel
 - `callback` (function): callback when complete.
 
 This method has a callback function whose arguments will be:    
-- `result`(string): the title text of the button that clicked by user.    
+- `resultVo`(string): the title text of the button that clicked by user.
 **Example:**
 
 ```html
@@ -152,8 +152,8 @@ When a prompt box pops up, the user will have to click either confirm or cancel 
   - `cancelTitle` (string): the title text of cancel button, default is 'Cancel'.
 - `callback` (function): callback when complete.     
   This method has a callback function whose arguments will be:    
-- `ret` (object): the argument will be a object, which has attributes `result` and `data`,  like `{ result: 'OK', data: 'hello world' }`
-  - `result` (string): the title of the button that clicked by user.
+- `ret` (object): the argument will be a object, which has attributes `resultVo` and `data`,  like `{ resultVo: 'OK', data: 'hello world' }`
+  - `resultVo` (string): the title of the button that clicked by user.
   - `data` (string): the value of the text that entered by user.     
 
 **Example:**    

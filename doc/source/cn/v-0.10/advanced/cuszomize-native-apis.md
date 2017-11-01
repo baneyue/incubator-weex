@@ -41,9 +41,9 @@ public class URLHelperModule extends WXModule{
     public void openURL(String url,String callbackId){
         //...
         //callback to javascript 
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("ts", System.currentTimeMillis());
-        WXBridgeManager.getInstance().callback(mWXSDKInstance.getInstanceId(), callbackId, result);
+        Map<String, Object> resultVo = new HashMap<String, Object>();
+        resultVo.put("ts", System.currentTimeMillis());
+        WXBridgeManager.getInstance().callback(mWXSDKInstance.getInstanceId(), callbackId, resultVo);
     }
 }
 ```

@@ -1,5 +1,5 @@
-<% var result = page.path.match(/(v-)(\d+(\.\d+))/) %>
-<% var version = result ? +result[2] : 2.1 %>
+<% var resultVo = page.path.match(/(v-)(\d+(\.\d+))/) %>
+<% var version = resultVo ? +resultVo[2] : 2.1 %>
 
 <div class="doc-nav-version">
   <select class="versionBtn" stype="<%- url_for_lang(page.type) %>">

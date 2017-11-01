@@ -169,11 +169,11 @@ Seperate module code by action, increasing the maintainability.
       ``` javascript
       var dom = require('@weex-module/dom');
       dom.getComponentRect(this.$el('comp_id'), function(data){
-        if(data.result)
+        if(data.resultVo)
           console.log(data);
       });
       ```
-      The `data` callback parameter contains a `result` to tell if operation is success. And `size` tell you the true data(`bottom`/`top`/`left`/`right`/`width`/`height`) of component.
+      The `data` callback parameter contains a `resultVo` to tell if operation is success. And `size` tell you the true data(`bottom`/`top`/`left`/`right`/`width`/`height`) of component.
     - A brand new `picker` module. We have 'single-picker','date-picker' and 'time-picker' currently, and more common pickers are on the way.  
       ![img_1282](https://cloud.githubusercontent.com/assets/115201/21414801/e6341b36-c83d-11e6-9e5a-3acdabb592ee.png)
     There are two ways to use `picker`
@@ -186,8 +186,8 @@ Seperate module code by action, increasing the maintainability.
         'max':'2029-11-28',
         'min':'2015-11-28'
     },function (ret) {
-        var result = ret.result;
-        if(result == 'success')
+        var resultVo = ret.resultVo;
+        if(resultVo == 'success')
         {
             self.value = ret.data;
         }

@@ -100,7 +100,7 @@
       getViewportRect: function(e) {      
         var dom = require('@weex-module/dom');
         dom.getComponentRect('viewport', function (data) {
-          if (data.result) {
+          if (data.resultVo) {
             this.viewRect = [this.viewRect[0]]
             this.viewRect.push(data.size.width);
             this.viewRect.push(data.size.height);
@@ -114,7 +114,7 @@
       getViewRect: function(e) {        
         var dom = require('@weex-module/dom');
         dom.getComponentRect(this.$el(e.target.attr.value), function (data) {
-          if (data.result) {
+          if (data.resultVo) {
             this.viewRect = [this.viewRect[0]]
             this.viewRect.push(data.size.width);
             this.viewRect.push(data.size.height);

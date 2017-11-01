@@ -1,5 +1,5 @@
 <!--
-  * v-if="flag": display or not by the truthy/falsy result
+  * v-if="flag": display or not by the truthy/falsy resultVo
 -->
 
 <template>

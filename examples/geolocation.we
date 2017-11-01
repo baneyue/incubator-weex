@@ -16,32 +16,32 @@
         },
         created: function () {
             var geolocation = require('@weex-module/geolocation');
-            geolocation.getCurrentPosition(function (result) {
-                console.log("into--[getCurrentPosition success] result:" + JSON.stringify(result));
-                this.location = JSON.stringify(result);
-            }.bind(this), function (result) {
-                console.log("into--[getCurrentPosition error] result:" + JSON.stringify(result));
-                this.location = JSON.stringify(result);
+            geolocation.getCurrentPosition(function (resultVo) {
+                console.log("into--[getCurrentPosition success] resultVo:" + JSON.stringify(resultVo));
+                this.location = JSON.stringify(resultVo);
+            }.bind(this), function (resultVo) {
+                console.log("into--[getCurrentPosition error] resultVo:" + JSON.stringify(resultVo));
+                this.location = JSON.stringify(resultVo);
             }.bind(this), {enableHighAcuracy: false, address: true})
 
-            geolocation.watchPosition(function (result) {
-                console.log("into--[watchPosition success] result:" + JSON.stringify(result));
-                var str = this.watchlocation + '\n' + JSON.stringify(result);
+            geolocation.watchPosition(function (resultVo) {
+                console.log("into--[watchPosition success] resultVo:" + JSON.stringify(resultVo));
+                var str = this.watchlocation + '\n' + JSON.stringify(resultVo);
                 this.watchlocation = str;
                 this.i += 1;
 
                 if (this.i == 2) {
-                    geolocation.clearWatch(result.registerId);
+                    geolocation.clearWatch(resultVo.registerId);
                     require('@weex-module/modal').toast({
-                        'message': "[clear watch] id:"+result.registerId,
+                        'message': "[clear watch] id:"+resultVo.registerId,
                         'duration': 1
                     });
                 }
 
 
-            }.bind(this), function (result) {
-                console.log("into--[watchPosition success] result:" + JSON.stringify(result));
-                this.watchlocation = JSON.stringify(result);
+            }.bind(this), function (resultVo) {
+                console.log("into--[watchPosition success] resultVo:" + JSON.stringify(resultVo));
+                this.watchlocation = JSON.stringify(resultVo);
             }.bind(this), {enableHighAcuracy: false, address: true})
         },
         methods: {}

@@ -56,8 +56,8 @@
                     'items':items,
                     'index':self.index
                 },function (ret) {
-                    var result = ret.result;
-                    if(result == 'success')
+                    var resultVo = ret.resultVo;
+                    if(resultVo == 'success')
                     {
                         self.value = items[ret.data];
                         self.index = ret.data;
@@ -73,8 +73,8 @@
                     'max':'2029-11-28',
                     'min':'2015-11-28'
                 },function (ret) {
-                    var result = ret.result;
-                    if(result == 'success')
+                    var resultVo = ret.resultVo;
+                    if(resultVo == 'success')
                     {
                         self.value = ret.data;
                     }
@@ -86,8 +86,8 @@
                 picker.pickTime({
                     'value':'19:24'
                 },function (ret) {
-                    var result = ret.result;
-                    if(result == 'success')
+                    var resultVo = ret.resultVo;
+                    if(resultVo == 'success')
                     {
                         self.value = ret.data;
                     }

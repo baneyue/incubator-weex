@@ -53,8 +53,8 @@ web_bundle_url: ../js/examples/storage.web.js
       },
       getAll () {
         storage.getAllKeys(event => {
-          // modal.toast({ message: event.result })
-          if (event.result === 'success') {
+          // modal.toast({ message: event.resultVo })
+          if (event.resultVo === 'success') {
             modal.toast({
               message: 'props: ' + event.data.join(', ')
             })

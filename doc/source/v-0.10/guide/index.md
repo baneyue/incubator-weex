@@ -34,7 +34,7 @@ You can directly copy and paste the above code into a Weex file named `tech_list
 
 ## Preview
 
-Once created, we want to see the running result of the `.we` file. But before that, we must make sure the dependencies are installed.
+Once created, we want to see the running resultVo of the `.we` file. But before that, we must make sure the dependencies are installed.
 
 We should install [Node](https://nodejs.org/en/download/) first, which our Weex CLI program [Weex Toolkit](https://www.npmjs.com/package/weex-toolkit) depends on. Then install `weex-toolkit` by running the command:
 
@@ -62,7 +62,7 @@ If all work well, navigate to the directory where you saved `tech_list.we`, then
 $ weex tech_list.we
 ```
 
-A browser window will be opened automatically to display the running result like below     (weex-toolkit version should be greater than 0.1.0, use `weex --version` to check it):
+A browser window will be opened automatically to display the running resultVo like below     (weex-toolkit version should be greater than 0.1.0, use `weex --version` to check it):
 
 ![mobile_preview](https://gtms02.alicdn.com/tps/i2/TB1y151LVXXXXXXaXXXoRYgWVXX-495-584.jpg)
 

@@ -33,7 +33,7 @@ When an alert box pops up, the user will have to click "OK" to proceed.
  - `okTitle` (string): the text of positive button, default is 'OK'.
  - `callback` (function): callback when complete.    
   This method has a callback function whose arguments will be:    
-- `result` (string): the title text of the confirm button that clicked by user.
+- `resultVo` (string): the title text of the confirm button that clicked by user.
 
 ### confirm(options, callback)    
 A confirm box is often used if you want the user to verify or accept something.    
@@ -48,7 +48,7 @@ When a confirm box pops up, the user will have to click either confirm or cancel
 - `callback` (function): callback when complete.
 
 This method has a callback function whose arguments will be:    
-- `result`(string): the title text of the button that clicked by user.    
+- `resultVo`(string): the title text of the button that clicked by user.
 
 ### prompt(options, callback)    
 
@@ -62,8 +62,8 @@ When a prompt box pops up, the user will have to click either confirm or cancel 
   - `cancelTitle` (string): the title text of cancel button, default is 'Cancel'.
 - `callback` (function): callback when complete.     
   This method has a callback function whose arguments will be:    
-- `ret` (object): the argument will be a object, which has attributes `result` and `data`,  like `{ result: 'OK', data: 'hello world' }`
-  - `result` (string): the title of the button that clicked by user.
+- `ret` (object): the argument will be a object, which has attributes `resultVo` and `data`,  like `{ resultVo: 'OK', data: 'hello world' }`
+  - `resultVo` (string): the title of the button that clicked by user.
   - `data` (string): the value of the text that entered by user.     
 
 ## Example

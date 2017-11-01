@@ -107,8 +107,8 @@ version: 2.1
       回调函数作为方法入参，接收保存结果.
       ```
      	var image = this.$refs.imageRef; // image 是之前已经定义过的ref
-  		image.save(function(result) {
-  			console.log(JSON.stringify(result))
+  		image.save(function(resultVo) {
+  			console.log(JSON.stringify(resultVo))
 		}); 
     	```
     - 异步返回的数据描述

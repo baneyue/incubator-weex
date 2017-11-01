@@ -50,7 +50,7 @@
         var me = this
         modal.toast({'message': 'doPaste!', duration: 0.5})
         clipboard.getString(function(ret) {
-          console.log("paste result is " + JSON.stringify(ret))
+          console.log("paste resultVo is " + JSON.stringify(ret))
           me.textFromPaste = ret.data
           me.tips = "Paste done. Only support native(Android/iOS) NOW. according to security reason, paste in html5 is not supported."
         })

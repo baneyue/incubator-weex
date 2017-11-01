@@ -51,7 +51,7 @@ version: 2.1
 | `rotate`/`rotateX` <span class="api-version">v0.14+</span> /`rotateY` <span class="api-version">v0.14+</span> | 指定元素将被旋转的角度，单位是度 | number | 无 |
 | `perspective` <span class="api-version">v0.16+</span> | 观察者距离z=0平面的距离，在Android 4.1及以上有效 | number | 正无穷
 
-* `callback {Function}`：动画执行完毕之后的回调函数。**注意，在0.16.0+版本后，iOS上可以获取animation是否执行成功的信息，callback中的`result`参数会有两种，分别是是`Success`与`Fail`，Android暂不支持。**
+* `callback {Function}`：动画执行完毕之后的回调函数。**注意，在0.16.0+版本后，iOS上可以获取animation是否执行成功的信息，callback中的`resultVo`参数会有两种，分别是是`Success`与`Fail`，Android暂不支持。**
 
 ## Example
 

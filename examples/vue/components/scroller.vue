@@ -78,7 +78,7 @@
   console.log(dom)
   module.exports = {
     mounted () {
-      const result = dom.getComponentRect(this.$refs.scroller, option => {
+      const resultVo = dom.getComponentRect(this.$refs.scroller, option => {
         console.log('getComponentRect:', option)
       })
     },

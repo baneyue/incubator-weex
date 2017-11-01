@@ -1,6 +1,6 @@
 <!--
   * mustache delimiters can be ignored
-  * if="flag": display or not by the truthy/falsy result
+  * if="flag": display or not by the truthy/falsy resultVo
 -->
 
 <template>

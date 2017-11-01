@@ -53,7 +53,7 @@ web_bundle_url: ../js/examples/dom-rect.web.js
       }
     },
     mounted () {
-      const result = dom.getComponentRect(this.ref, option => {
+      const resultVo = dom.getComponentRect(this.ref, option => {
         console.log('getComponentRect:', option)
         this.size = round.call(this,option.size);
       })
@@ -69,7 +69,7 @@ web_bundle_url: ../js/examples/dom-rect.web.js
           this.tip = "get box rect"
         }
           
-         const result = dom.getComponentRect(this.ref, option => {
+         const resultVo = dom.getComponentRect(this.ref, option => {
           console.log('getComponentRect:', option)
           this.size = round.call(this,option.size);
         })

@@ -27,12 +27,12 @@ version: 2.1
 * `key {string}`：要存储的键，不允许是 `""` 或 `null`
 * `value {string}`：要存储的值，不允许是 `""` 或 `null`
 * `callback {function (e)}`：执行操作成功后的回调
-  * `e.result`：表示设置是否成功，如果成功返回 `"success"`
+  * `e.resultVo`：表示设置是否成功，如果成功返回 `"success"`
   * `e.data`：`undefined` 表示设置成功，`invalid_param` 表示 key/value 为 `""` 或者 `null`
 
 这里，对返回值做一个简单的介绍：
 
-`e` 包含两个属性：`e.result` 和 `e.data`。如果 `e.result` 返回值是 “success”，则说明成功。`e.data` 返回 `undefined` 表示设置成功，返回 `invalid_param` 表示` key/value` 为 "" 或者 null。因此，你可以判断两个返回判断是否插入成功。
+`e` 包含两个属性：`e.resultVo` 和 `e.data`。如果 `e.resultVo` 返回值是 “success”，则说明成功。`e.data` 返回 `undefined` 表示设置成功，返回 `invalid_param` 表示` key/value` 为 "" 或者 null。因此，你可以判断两个返回判断是否插入成功。
 
 ### `getItem(key, callback)`
 
@@ -42,7 +42,7 @@ version: 2.1
 
 * `key {string}`：要获取的值的名称，不允许是 `""` 或 `null`
 * `callback {function (e)}`：执行操作成功后的回调
-  * `e.result`：表示设置是否成功，如果成功返回 `"success"`
+  * `e.resultVo`：表示设置是否成功，如果成功返回 `"success"`
   * `e.data`：获取对应的键值字符串，如果没有找到则返回 `undefined`
 
 ### `removeItem(key, callback)`
@@ -53,7 +53,7 @@ version: 2.1
 
 * `key {string}`：要删除的值的名称，不允许是 `""` 或 `null`
 * `callback {function (e)}`：执行操作成功后的回调.
-  * `e.result`：表示删除是否成功，如果成功返回 `"success"`
+  * `e.resultVo`：表示删除是否成功，如果成功返回 `"success"`
   * `e.data`：`undefined` 表示删除成功
 
 ### `length(callback)`
@@ -63,7 +63,7 @@ version: 2.1
 #### 参数
 
 * `callback {function (e)}`：执行操作成功后的回调
-  * `e.result`：表示设置是否成功，如果成功返回 `"success"`
+  * `e.resultVo`：表示设置是否成功，如果成功返回 `"success"`
   * `e.data`：当前已存储项的数量
 
 
@@ -74,7 +74,7 @@ version: 2.1
 #### 参数
 
 * `callback {function (e)}`：执行操作成功后的回调。
-  * `e.result`：表示设置是否成功，如果成功返回 `"success"`
+  * `e.resultVo`：表示设置是否成功，如果成功返回 `"success"`
   * `e.data`：所有键名组成的数组
 
 ## 示例
@@ -127,8 +127,8 @@ version: 2.1
       },
       getAll () {
         storage.getAllKeys(event => {
-          // modal.toast({ message: event.result })
-          if (event.result === 'success') {
+          // modal.toast({ message: event.resultVo })
+          if (event.resultVo === 'success') {
             modal.toast({
               message: 'props: ' + event.data.join(', ')
             })

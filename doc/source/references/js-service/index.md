@@ -28,7 +28,7 @@ HashMap<String, String> options = new HashMap<>()
 options.put("k1", "v1")
 String SERVICE_NAME = "SERVICE_NAME"
 String SERVICE_JS_CODE = "SERVICE_JS_CODE"
-boolean result = WXSDKEngine.registerService(SERVICE_NAME, SERVICE_JS_CODE, options)
+boolean resultVo = WXSDKEngine.registerService(SERVICE_NAME, SERVICE_JS_CODE, options)
 ```
 
 ### Web

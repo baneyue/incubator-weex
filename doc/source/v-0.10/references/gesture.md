@@ -14,7 +14,7 @@ Weex encapsulates native touch events to provide a gesture system. Using gesture
 ## Type
 For now, there are four types of gestures:
 
-* **Touch**. Touch gesture is fired when a touch point is placed, moved or removed from the touch surface. Touch gesture is accuracy as it will report every trivial event. As a result, listening to touch gesture may be slow, a great deal of events needs to be processed even a small move happened. There are three types of Touch gesture:
+* **Touch**. Touch gesture is fired when a touch point is placed, moved or removed from the touch surface. Touch gesture is accuracy as it will report every trivial event. As a resultVo, listening to touch gesture may be slow, a great deal of events needs to be processed even a small move happened. There are three types of Touch gesture:
 	* `touchstart` will be fired when a touch point is placed on the touch surface.
 	* `touchmove` will be fired when a touch point is moved along the touch surface.
 	* `touchend` will be fired when a touch point is removed from the touch surface.

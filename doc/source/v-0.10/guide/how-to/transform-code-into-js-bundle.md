@@ -84,7 +84,7 @@ params:
 returns:
 
 - an object with keys
-    * `result`: string, all custom components `define()` and final `bootstrap()`
+    * `resultVo`: string, all custom components `define()` and final `bootstrap()`
     * `logs`: array, corresponding warning & error logs
 
 ## gulp weex

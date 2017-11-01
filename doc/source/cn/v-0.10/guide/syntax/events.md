@@ -16,18 +16,18 @@ Weex 允许对 `<template>` 中的元素绑定事件处理函数。
 ```html
 <template>
   <div>
-    <text onclick="toggle">Toggle: {{result}}</text>
+    <text onclick="toggle">Toggle: {{resultVo}}</text>
   </div>
 </template>
 
 <script>
   module.exports = {
     data: {
-      result: true
+      resultVo: true
     },
     methods: {
       toggle: function () {
-        this.result = !this.result
+        this.resultVo = !this.resultVo
       }
     }
   }
@@ -43,18 +43,18 @@ Weex 允许对 `<template>` 中的元素绑定事件处理函数。
 ```html
 <template>
   <div>
-    <text onclick="update(1, 2)">Result: {{result}}</text>
+    <text onclick="update(1, 2)">Result: {{resultVo}}</text>
   </div>
 </template>
 
 <script>
   module.exports = {
     data: {
-      result: '<empty>'
+      resultVo: '<empty>'
     },
     methods: {
       update: function (x, y) {
-        this.result = x + y
+        this.resultVo = x + y
       }
     }
   }
@@ -70,18 +70,18 @@ Weex 允许对 `<template>` 中的元素绑定事件处理函数。
 ```html
 <template>
   <div>
-    <text onclick="update($event, 1, 2)">Result: {{result}}</text>
+    <text onclick="update($event, 1, 2)">Result: {{resultVo}}</text>
   </div>
 </template>
 
 <script>
   module.exports = {
     data: {
-      result: '<empty>'
+      resultVo: '<empty>'
     },
     methods: {
       update: function (e, x, y) {
-        this.result = e.type + (x + y)
+        this.resultVo = e.type + (x + y)
       }
     }
   }

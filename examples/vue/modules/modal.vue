@@ -55,8 +55,8 @@
           'message': msg,
           'okTitle': okTitle,
           'cancelTitle': cancelTitle
-        }, function(result) {
-          modal.toast({ message: "Click Confirm  " + JSON.stringify(result) })
+        }, function(resultVo) {
+          modal.toast({ message: "Click Confirm  " + JSON.stringify(resultVo) })
         })
       },
       prompt: function() {
@@ -64,8 +64,8 @@
           'message': 'I am Prompt!',
           'okTitle': 'ok',
           'cancelTitle': 'cancel'
-        }, function(result) {
-          modal.toast({ message: "Click Prompt  " + JSON.stringify(result) })
+        }, function(resultVo) {
+          modal.toast({ message: "Click Prompt  " + JSON.stringify(resultVo) })
         })
       }
     }

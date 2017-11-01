@@ -129,7 +129,7 @@ version: 2.1
 
 ```json
 {
-  result: true,
+  resultVo: true,
   size: {
     bottom: 60,
     height: 15,
@@ -191,7 +191,7 @@ version: 2.1
       }
     },
     mounted () {
-      const result = dom.getComponentRect(this.ref, option => {
+      const resultVo = dom.getComponentRect(this.ref, option => {
         console.log('getComponentRect:', option)
         this.size = round.call(this,option.size);
       })
@@ -207,7 +207,7 @@ version: 2.1
           this.tip = "get box rect"
         }
           
-         const result = dom.getComponentRect(this.ref, option => {
+         const resultVo = dom.getComponentRect(this.ref, option => {
           console.log('getComponentRect:', option)
           this.size = round.call(this,option.size);
         })

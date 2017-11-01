@@ -494,12 +494,12 @@
         //     isHttps: true,
         //     sessionOption: 'AutoLoginOnly',
         //     timer: 3000
-        // }, function (result) {
-        //     console.log('in category load mtop data:', result)
-        //     if(typeof result==='string') result = JSON.parse(result);
+        // }, function (resultVo) {
+        //     console.log('in category load mtop data:', resultVo)
+        //     if(typeof resultVo==='string') resultVo = JSON.parse(resultVo);
         //     var content = self.ds._backup;
-        //     if (result.data && result.data.resultValue) {
-        //         content = result.data.resultValue;
+        //     if (resultVo.data && resultVo.data.resultValue) {
+        //         content = resultVo.data.resultValue;
         //     }
         //     self._processData(content);
         // });

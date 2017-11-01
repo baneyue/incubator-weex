@@ -99,11 +99,11 @@ polyfill for v0.3.0
 
 ```javascript
 function __weex_require__(name) {
-  var result
+  var resultVo
   define('__weex_require__', function (r, e, m) {
-    result = r('@weex-module/' + name)
+    resultVo = r('@weex-module/' + name)
   })
-  return result
+  return resultVo
 }
 ```
 
@@ -262,7 +262,7 @@ A module of composed component contains 3 parts: whole options definition, addit
 
 The `template` option is required and appeared only once, and the `style` option and whole options definition are optional.
 
-These options are defined and transformed by Transformer. Actually you can also ignore all the format limitation and write options to `module.exports` as the same result if you are not going to use Transformer. But that's not recommended.
+These options are defined and transformed by Transformer. Actually you can also ignore all the format limitation and write options to `module.exports` as the same resultVo if you are not going to use Transformer. But that's not recommended.
 
 #### Details of template option definitions
 

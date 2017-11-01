@@ -50,14 +50,14 @@ This component supports no child components.
 **component method**
 
 - support save <sup class="api-version">v0.16.0+</sup> image to local device or photo album.
-  - you should specify a callback function to receive the saving result. 
+  - you should specify a callback function to receive the saving resultVo.
 	  ```
 	 	var image = this.$refs.imageRef; // image 是之前已经定义过的ref
-	  		image.save(function(result) {
-	  			console.log(JSON.stringify(result))
+	  		image.save(function(resultVo) {
+	  			console.log(JSON.stringify(resultVo))
 		}); 
 		```
-    	and the result can be the following format
+    	and the resultVo can be the following format
      ```
       	{
     		"success" : true/false, // 保存成功或失败

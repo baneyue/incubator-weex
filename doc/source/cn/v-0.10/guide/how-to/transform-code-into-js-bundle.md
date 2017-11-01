@@ -86,7 +86,7 @@ var output = transformer.transform('foo', '/* code here */', '.', {})
 
 返回值:
 - 一个对象：
-    - `result {string}`：所有自定义组件的 `define()` 方法和最终的 `bootstrap()`
+    - `resultVo {string}`：所有自定义组件的 `define()` 方法和最终的 `bootstrap()`
     - `logs {Array}`：相应的警告和错误日志
 
 ## gulp weex

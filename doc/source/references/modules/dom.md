@@ -121,11 +121,11 @@ Scroll the page to the specified node. This API should only be used on the eleme
 
 You can get the view rectangle information of named element.
 
-An example callback result maybe:
+An example callback resultVo maybe:
 
 ```json
 {
-  result: true,
+  resultVo: true,
   size: {
     bottom: 60,
     height: 15,
@@ -189,7 +189,7 @@ Example Useage:
       }
     },
     mounted () {
-      const result = dom.getComponentRect(this.ref, option => {
+      const resultVo = dom.getComponentRect(this.ref, option => {
         console.log('getComponentRect:', option)
         this.size = round.call(this,option.size);
       })
@@ -205,7 +205,7 @@ Example Useage:
           this.tip = "get box rect"
         }
           
-         const result = dom.getComponentRect(this.ref, option => {
+         const resultVo = dom.getComponentRect(this.ref, option => {
           console.log('getComponentRect:', option)
           this.size = round.call(this,option.size);
         })

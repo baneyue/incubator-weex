@@ -44,7 +44,7 @@ version: 2.1
   - `message {string}`：确认框内显示的文字信息
   - `okTitle {string}`：确认按钮上显示的文字信息，默认是 `OK`
   - `cancelTitle {string}`：取消按钮上显示的文字信息，默认是 `Cancel`
-- `callback {function (result)}`：用户操作完成后的回调，回调函数的参数 `result` 是确定按钮上的文字信息字符串
+- `callback {function (resultVo)}`：用户操作完成后的回调，回调函数的参数 `resultVo` 是确定按钮上的文字信息字符串
 
 ### `prompt(options, callback)`
 
@@ -56,8 +56,8 @@ version: 2.1
   - `message {string}`：提示框内要显示的文字信息
   - `okTitle {string}`：确认按钮上显示的文字信息，默认是 `OK`
   - `cancelTitle {string}`：取消按钮上显示的文字信息，默认是 `Cancel`
-- `callback {function (ret)}`：用户操作完成后的回调，回调函数的参数 `ret` 格式形如 `{ result: 'OK', data: 'hello world' }`，如下
-  - `result {string}`：用户按下的按钮上的文字信息
+- `callback {function (ret)}`：用户操作完成后的回调，回调函数的参数 `ret` 格式形如 `{ resultVo: 'OK', data: 'hello world' }`，如下
+  - `resultVo {string}`：用户按下的按钮上的文字信息
   - `data {string}`：用户输入的文字信息
 
 

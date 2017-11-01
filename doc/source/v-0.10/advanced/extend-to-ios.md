@@ -42,7 +42,7 @@ For example: If you want to implement an address jumping function, you can achie
     ((WXDemoViewController *)controller).url = [NSURL URLWithString:newURL];
 
     [[weexInstance.viewController navigationController] pushViewController:controller animated:YES];
-    callback(@{@"result":@"success"});
+    callback(@{@"resultVo":@"success"});
 }
 
 @end

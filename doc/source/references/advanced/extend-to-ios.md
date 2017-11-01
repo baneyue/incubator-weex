@@ -48,7 +48,7 @@ WX_EXPORT_METHOD(@selector(openURL:callback:))
     ((WXDemoViewController *)controller).url = [NSURL URLWithString:newURL];
 
     [[weexInstance.viewController navigationController] pushViewController:controller animated:YES];
-    callback(@{@"result":@"success"});
+    callback(@{@"resultVo":@"success"});
 }
 
 @end

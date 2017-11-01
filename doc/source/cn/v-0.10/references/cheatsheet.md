@@ -38,7 +38,7 @@ code {
 | module | apis |
 | ---- | ---- |
 | `@weex-module/dom` | `scrollToElement(node, { offset })` |
-| `@weex-module/modal` | `toast({ message, duration })`<br>`alert({ message, okTitle }, callback)`<br>`confirm({ message, okTitle, cancelTitle }, callback(result))`<br>`prompt({ message, okTitle, cancelTitle }, callback(result, data))` |
+| `@weex-module/modal` | `toast({ message, duration })`<br>`alert({ message, okTitle }, callback)`<br>`confirm({ message, okTitle, cancelTitle }, callback(resultVo))`<br>`prompt({ message, okTitle, cancelTitle }, callback(resultVo, data))` |
 | `@weex-module/stream` | `fetch({ method, url, headers, type, body }, callback({ status, ok, statusText, data, headers }), progressCallback({ readyState, status, length, statusText, headers}))` |
 | `@weex-module/webview` | `goBack(ref)`<br>`goForward(ref)`<br>`reload(ref)` |
 | `@weex-module/navigator` | `push({ url, animated }, callback)`<br>`pop({ animated }, callback)` |

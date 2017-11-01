@@ -77,7 +77,7 @@ version: 0.10
     created: function(){
       var that = this;
       storage.getAllKeys(function(e) {
-        if(e.result == 'success' && e.data.length){
+        if(e.resultVo == 'success' && e.data.length){
           e.data.forEach(function(item){
             if(item.indexOf('search_') > -1){
               that.items.push(item.split('search_')[1]);
@@ -120,7 +120,7 @@ version: 0.10
 * `key {string}`：要存储的键，不允许是 `""` 或 `null`
 * `value {string}`：要存储的值，不允许是 `""` 或 `null`
 * `callback {function (e)}`：执行操作成功后的回调
-  * `e.result`：表示设置是否成功，如果成功返回 `"success"`
+  * `e.resultVo`：表示设置是否成功，如果成功返回 `"success"`
   * `e.data`：`undefined` 表示设置成功，`invalid_param` 表示 key/value 为 `""` 或者 `null`
 
 #### 示例
@@ -128,14 +128,14 @@ version: 0.10
 ```javascript
 var storage = require('@weex-module/storage')
 storage.setItem('bar', 'bar-value', function (e) {
-  e.result
+  e.resultVo
   e.data
 })
 ```
 
 这里，对返回值做一个简单的介绍：
 
-`e` 包含两个属性：`e.result` 和 `e.data`。如果 `e.result` 返回值是 “success”，则说明成功。`e.data` 返回 `undefined` 表示设置成功，返回 `invalid_param` 表示` key/value` 为 "" 或者 null。因此，你可以判断两个返回判断是否插入成功。
+`e` 包含两个属性：`e.resultVo` 和 `e.data`。如果 `e.resultVo` 返回值是 “success”，则说明成功。`e.data` 返回 `undefined` 表示设置成功，返回 `invalid_param` 表示` key/value` 为 "" 或者 null。因此，你可以判断两个返回判断是否插入成功。
 
 ### `getItem(key, callback)`
 
@@ -145,7 +145,7 @@ storage.setItem('bar', 'bar-value', function (e) {
 
 * `key {string}`：要获取的值的名称，不允许是 `""` 或 `null`
 * `callback {function (e)}`：执行操作成功后的回调
-  * `e.result`：表示设置是否成功，如果成功返回 `"success"`
+  * `e.resultVo`：表示设置是否成功，如果成功返回 `"success"`
   * `e.data`：获取对应的键值字符串，如果没有找到则返回 `undefined`
 
 #### 示例
@@ -165,7 +165,7 @@ storage.getItem('foo', function (e) {
 
 * `key {string}`：要删除的值的名称，不允许是 `""` 或 `null`
 * `callback {function (e)}`：执行操作成功后的回调.
-  * `e.result`：表示删除是否成功，如果成功返回 `"success"`
+  * `e.resultVo`：表示删除是否成功，如果成功返回 `"success"`
   * `e.data`：`undefined` 表示删除成功
 
 #### 示例
@@ -173,7 +173,7 @@ storage.getItem('foo', function (e) {
 ```javascript
 var storage = require('@weex-module/storage')
 storage.removeItem('foo', function (e) {
-  e.result
+  e.resultVo
   e.data
 })
 ```
@@ -185,7 +185,7 @@ storage.removeItem('foo', function (e) {
 #### 参数
 
 * `callback {function (e)}`：执行操作成功后的回调
-  * `e.result`：表示设置是否成功，如果成功返回 `"success"`
+  * `e.resultVo`：表示设置是否成功，如果成功返回 `"success"`
   * `e.data`：当前已存储项的数量
 
 #### 示例
@@ -193,7 +193,7 @@ storage.removeItem('foo', function (e) {
 ````javascript
 var storage = require('@weex-module/storage')
 storage.length(function (e) {
-  e.result
+  e.resultVo
   e.data
 })
 ````
@@ -205,7 +205,7 @@ storage.length(function (e) {
 #### 参数
 
 * `callback {function (e)}`：执行操作成功后的回调。
-  * `e.result`：表示设置是否成功，如果成功返回 `"success"`
+  * `e.resultVo`：表示设置是否成功，如果成功返回 `"success"`
   * `e.data`：所有键名组成的数组
 
 #### 示例
@@ -213,7 +213,7 @@ storage.length(function (e) {
 ````javascript
 var storage = require('@weex-module/storage')
 storage.getAllKeys(function (e) {
-  e.result
+  e.resultVo
   e.data
 })
 ````

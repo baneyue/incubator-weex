@@ -1,6 +1,6 @@
 <template>
   <div style="padding: 5px;">
-    <text class="result">{{result}}</text>
+    <text class="resultVo">{{resultVo}}</text>
     <div class="row">
       <text class="btn" onclick="input">1</text>
       <text class="btn" onclick="input">2</text>
@@ -33,7 +33,7 @@
     flex-direction: row;
   }
 
-  .result {
+  .resultVo {
     text-align: right;
     background-color: #666;
     font-size: 40px;
@@ -47,7 +47,7 @@
     font-size: 36px;
   }
 
-  .btn, .result {
+  .btn, .resultVo {
     height: 100px;
     padding: 30px;
     margin: 5px;
@@ -66,7 +66,7 @@
   var inputs = [];
   module.exports = {
     data: {
-      result: ''
+      resultVo: ''
     },
     methods: {
       input: function(e) {
@@ -85,16 +85,16 @@
           }
           buf.push(char);
         }
-        this.result = buf.join('');
+        this.resultVo = buf.join('');
       },
       calculate: function() {
-        var result = eval(this.result);
-        inputs = [result];
-        this.result = result;
+        var resultVo = eval(this.resultVo);
+        inputs = [resultVo];
+        this.resultVo = resultVo;
       },
       clear: function() {
         inputs = [];
-        this.result = '';
+        this.resultVo = '';
       }
     }
   }
