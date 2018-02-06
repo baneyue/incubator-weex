@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.7.3'
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.1'
         classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.5.0'
     }
 }
@@ -46,7 +46,7 @@ version = "0.9.4"
 
 android {
     compileSdkVersion project.ext.cfg.compileSdkVersion
-    buildToolsVersion project.ext.cfg.buildToolsVersion
+//    buildToolsVersion project.ext.cfg.buildToolsVersion
     resourcePrefix "weex"
 
     useLibrary 'org.apache.http.legacy'
